@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style type="text/css">
+	.a{
+		border: 1px red solid;
+		background-color: gray;
+	}
+	.carousel-inner img{
+		margin: 0 auto;
+		width: 85%;
+		height: 80%;
+		
+	}
+	#myCarousel{
+		background-color: #000000;
+	}
+	
+</style>
+</head>
+<body>
+<div class="header">
+	
+</div>
+
+<div id="myCarousel" class="carousel slide">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>
+	<div class="carousel-inner" id="benzLi">
+		<div class="item active"><img src="images/1.jpg" alt="" ></div>
+		<div class="item"><img src="images/2.jpg" alt=""></div>
+		<div class="item"><img src="images/3.jpg" alt=""></div>
+		<a class="carousel-control left" href="#myCarousel" 
+	        data-slide="prev">&lsaquo;
+	    </a>
+	    <a class="carousel-control right" href="#myCarousel" 
+	        data-slide="next">&rsaquo;
+	    </a>
+	</div>
+</div>
+<div class="jumbotron">
+	<div class="container">
+		<h1>汽车查询</h1>
+		<p>看车 买车 用车</p>
+		<p><a href="http://localhost/resCar/car/carList.html" class="btn btn-default">进入查看</a></p>
+	</div>
+</div>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/resCar/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://localhost/resCar/js/project.js"></script>
+</body>
+</html>
