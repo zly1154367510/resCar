@@ -14,6 +14,15 @@ $(document).ready(function(){
 			data: JSON.stringify(requestJson),
 			success:function(data){
 				console.log(data)
+				if (data.status==200) {
+					console.log(data.data.uuid);
+
+					localStorage.setItem(data.data.username,data.data.uuid)
+					localStorage.setItem("username",data.data.username)
+					top.location = "http://localhost/resCar/project.html"
+				}else if (data.status==401) {
+					alert(data.msg)
+				}
 			},
 			 error: function(XMLHttpRequest, textStatus, errorThrown) {
                         alert(XMLHttpRequest.status);
