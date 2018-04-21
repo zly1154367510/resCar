@@ -20,7 +20,7 @@ $(document).ready(function(){
 				contentType:"application/json;charset=utf-8",
 				data: JSON.stringify(requestJson),
 				success:function(data){
-					console.log(data)
+					//console.log(data)
 					if (data.status==200) {
 						alert("注册成功")
 						top.location = "http://localhost/resCar/project.html"

@@ -51,8 +51,16 @@
 						<input type="password" class="form-control" id="passwordText">
 					</div>
 					<br>
+					<img alt="验证码" onclick = "this.src='http://localhost:8081/check/authCode?d='+new Date()*1" src="http://localhost:8081/check/authCode" /> 
 					<br>
-					<button type="button" class="btn btn-primary regsiterBtn">登录</button>
+					<div class="input-group">
+						  
+						<span class="input-group-addon">验证码</span>
+						<input type="text" class="form-control" id="authCodeText">
+					</div>
+					<br>
+					<br>
+					<button type="button" class="btn btn-primary loginBtn">登录loginBtn</button>
 				</div>
 			</div>
 		</div>
@@ -60,6 +68,7 @@
 </div>
 <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://localhost/resCar/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://localhost/resCar/user/login/js/regsiter.js"></script>
+<script type="text/javascript" src="http://localhost/resCar/user/login/js/userLogin.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 </body>
 </html>

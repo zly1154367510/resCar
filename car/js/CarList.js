@@ -1,6 +1,9 @@
 $(document).ready(function(){
 	$(".header").load("http://localhost/resCar/static/public/header.html")
 	initAjax(1)
+	function addCC(carId){
+		console.log(carId);
+	}
 	//发送ajax请求获取车辆列表
 	function initAjax(pageNum1){
 		console.log("initHello")
@@ -26,6 +29,10 @@ $(document).ready(function(){
 						newHtml+="<p>"+da[i].name+"</p>"
 						newHtml+="<p>"+da[i].mileage+"</p>"
 						newHtml+="<p>"+da[i].pirce+"</p>"
+						newHtml+="</td>"
+						newHtml+="<td>"
+						newHtml+="<p><a class='accBtn' id='"+da[i].id+"' >加入购物车</a></p>"
+						newHtml+="</td>"
 						newHtml+="</tr>"
 						$("tbody").append(newHtml)			
 					}
@@ -43,6 +50,7 @@ $(document).ready(function(){
 		url:"http://localhost:8081/car/getCarCount",
 		type:"GET",
 		dataType:"json",
+		contentType:"application/json;charset=utf-8",
 		success:function(data){
 			if(data.status=="200"){
 				var pageNum = Math.ceil(data.data/20)
@@ -81,4 +89,28 @@ $(document).ready(function(){
 		console.log($(this).text())
 		initAjax($(this).text())
 	})
+
+	$(document).on("click",".accBtn",function(){
+		//console.log($(this).attr("id"))
+		var username = localStorage.getItem("username")
+		var token = localStorage.getItem(username)
+		var carId = $(this).attr("id")
+		console.log(username)
+		$.ajax({
+				url:"http://localhost:8081/mi/addShoppingCar",
+				type:"GET",
+				dataType:"json",
+				contentType:"application/json;charset=utf-8",
+				data:{
+						"username":username,
+						"token":token,
+						"carId":carId
+					},
+				success:function(data){
+					console.log(data)
+				}
+			})
+	})
+
+
 })

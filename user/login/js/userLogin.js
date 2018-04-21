@@ -1,9 +1,11 @@
 $(document).ready(function(){
 	$(".header").load("http://localhost/resCar/static/public/header.html")
-	function loginBtnClick(username,password){
+	function loginBtnClick(username,password,authCode,authCodeKey){
 		var requestJson = {
 			"username":username,
-			"password":password
+			"password":password,
+			"authCode":authCode,
+			"authCodeKey":authCodeKey
 		}
 		console.log(requestJson)
 		$.ajax({
@@ -12,11 +14,11 @@ $(document).ready(function(){
 			dataType:"json",
 			contentType:"application/json;charset=utf-8",
 			data: JSON.stringify(requestJson),
+
 			success:function(data){
 				console.log(data)
 				if (data.status==200) {
 					console.log(data.data.uuid);
-
 					localStorage.setItem(data.data.username,data.data.uuid)
 					localStorage.setItem("username",data.data.username)
 					top.location = "http://localhost/resCar/project.html"
@@ -31,9 +33,12 @@ $(document).ready(function(){
                     },  
 		})
 	}
+
 	$(".loginBtn").click(function(){
-		//console.log("点击")
-		loginBtnClick($("#usernameText").val(),$("#passwordText").val())
+		var authCodeKey = $.cookie("H_PS_PSSID")
+		
+		console.log(authCodeKey)
+		loginBtnClick($("#usernameText").val(),$("#passwordText").val(),$("#authCodeText").val(),authCodeKey)
 	})
 	
 
