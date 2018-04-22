@@ -6,7 +6,7 @@ $(document).ready(function(){
 	}
 	//发送ajax请求获取车辆列表
 	function initAjax(pageNum1){
-		console.log("initHello")
+		//console.log("initHello")
 		$("tbody").find("*").remove();
 		$.ajax({
 			url:"http://localhost:8081/car/getCarList/"+pageNum1,
@@ -95,19 +95,20 @@ $(document).ready(function(){
 		var username = localStorage.getItem("username")
 		var token = localStorage.getItem(username)
 		var carId = $(this).attr("id")
-		console.log(username)
+		//console.log(username)
 		$.ajax({
 				url:"http://localhost:8081/mi/addShoppingCar",
-				type:"GET",
+				type:"POST",
 				dataType:"json",
-				contentType:"application/json;charset=utf-8",
+				
 				data:{
 						"username":username,
 						"token":token,
 						"carId":carId
 					},
 				success:function(data){
-					console.log(data)
+					//console.log(data)
+					alert(data.data);
 				}
 			})
 	})
