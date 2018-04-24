@@ -47,9 +47,9 @@ $(document).ready(function(){
 						newHtml+="<p>生成时间:"+da[i].createTime+"</p>"
 						newHtml+="</td>"
 						newHtml+="<td>"
-						newHtml+="<p><a class='delShappingCarBtn' id='del"+da[i].id+" "+da[i].car.id+"' >删除订单</a></p>"
+						newHtml+="<p><a class='delShappingCarBtn' id='del"+da[i].id+"' >删除订单</a></p>"
 						if (da[i].isPay=='0') {
-							newHtml+="<td><p><a class='goPay' id='pay"+da[i].id+" "+da[i].car.id+"'>去支付</a></p></td>"
+							newHtml+="<td><p><a class='goPayBtn' id='pay"+da[i].id+" "+da[i].car.id+"'>去支付</a></p></td>"
 						}else{
 							newHtml+="<td><p>已支付</p></td>"
 						}
@@ -71,7 +71,33 @@ $(document).ready(function(){
 
 	}
 
-	$(document).on("click",".goPay",function(){
+	$(document).on("click",".delShappingCarBtn",function(){
+		var username = localStorage.getItem("username")
+		var token = localStorage.getItem(username)
+		var sId = $(this).attr("id").replace("del","")
+		var requestJson = {
+			"username":username,
+			"token":token,
+			"sId":sId
+		}
+		$.ajax({
+			url:"http://localhost:8081/mi/delShappingCar",
+			type:"POST",
+			dataType:"JSON",
+			data:requestJson,
+			success:function(data){
+				if (data.status==200) {
+					alert("删除成功")
+					window.location.reload()
+				}
+			},
+			error:function(){
+				alert("服务器错误")
+			}
+		})
+	})
+
+	$(document).on("click",".goPayBtn",function(){
 		var username = localStorage.getItem("username")
 		var token = localStorage.getItem(username)
 		var ids = $(this).attr("id").replace("pay","").split(" ")
@@ -84,12 +110,18 @@ $(document).ready(function(){
 		}
 		
 		$.ajax({
-				url:"http://localhost:8081/mi/delShappingCar",
+				url:"http://localhost:8081/mi/goPay",
 				type:"POST",
 				dataType:"json",
 				data:requestJson,
 				success:function(data){
-					alert(data.data)
+					if (data.status==200) {
+						alert("支付成功")
+						window.location.reload()
+					}
+				},
+				error:function(){
+					alert("服务器错误")
 				}
 			})
 	})

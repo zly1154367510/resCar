@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style type="text/css">
+	.body{	
+		margin:0;
+		padding:0
+		width: 80%;
+		border: 1px,#A2A2A2,solid;
+		position:absolute;
+		left:10%;
+		top: 10%;
+		z-index: 1
+	}
+	#myCarousel{
+		float: left;
+		width: 55%;
+		height: 55%
+	}
+	#carDatelis{
+		float: left;
+		margin-left: 10%
+	}
+	
+	#brand #name{
+		font-family: "Arial"
+	}
+
+	#blowUp img{
+		 z-index:999
+	}
+</style>
+</head>
+<body>
+<div class="header">
+	
+</div>
+<div class="body">
+	
+		
+		<div id="myCarousel" class="carousel slide">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner" id="benzLi">
+				<div class="item active" id="item1">
+					<img width="700px" src="" alt="" >
+				</div>
+				<div class="item" id="item2">
+					<img width="700px" src="" alt="">
+				</div>
+				<div class="item" id="item3">
+					<img width="700px" src="" alt="">
+				</div>
+				<a class="carousel-control left" href="#myCarousel" 
+			        data-slide="prev">&lsaquo;
+			    </a>
+			    <a class="carousel-control right" href="#myCarousel" 
+			        data-slide="next">&rsaquo;
+			    </a>
+			</div>
+		</div>
+		<!--<img src="" id="carImages">-->
+
+		<div id="carDatelis">
+			<h2></h2>
+			<div id="brand"><h2></h2></div>
+			<div id="name"><h2></h2></div>
+			<hr>
+			<div id="mileage"><h3></h3></div>
+			<div id="pYear"><h3></h3></div>
+			<div id="price"><h3></h3></div>
+			<hr>
+			<div id="address"><h3></h3></div>
+			<div id="legalPerson"><h3></h3></div>
+			<div id="phoneNumber"><h3></h3></div>
+			<button id="accBtn" value="加入购物车">加入购物车</button>
+		</div>
+		
+</div>
+
+<div id="blowUp">
+	<img width="100%" src="">
+</div>
+
+
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/resCar/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://localhost/resCar/car/js/carDetails.js"></script>
+</body>
+</html>

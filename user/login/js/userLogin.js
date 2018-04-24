@@ -1,5 +1,10 @@
 $(document).ready(function(){
 	$(".header").load("http://localhost/resCar/static/public/header.html")
+
+
+	//获取验证码id
+
+
 	function loginBtnClick(username,password,authCode,authCodeKey){
 		var requestJson = {
 			"username":username,
@@ -35,10 +40,10 @@ $(document).ready(function(){
 	}
 
 	$(".loginBtn").click(function(){
-		var authCodeKey = $.cookie("H_PS_PSSID")
-		
-		console.log(authCodeKey)
-		loginBtnClick($("#usernameText").val(),$("#passwordText").val(),$("#authCodeText").val(),authCodeKey)
+		//var authCodeKey = $.cookie("H_PS_PSSID")
+		console.log($.cookie('aptchaCode'))
+		//console.log(authCodeKey)
+		loginBtnClick($("#usernameText").val(),$("#passwordText").val(),$("#authCodeText").val(),"authCodeKey")
 	})
 	
 

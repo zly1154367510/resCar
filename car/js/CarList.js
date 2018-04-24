@@ -16,13 +16,14 @@ $(document).ready(function(){
 				console.log(data)
 				if(data.status=="200"){
 					var len = data.data.length;
+					console.log(len)
 					var da = data.data;
-					for (var i = 0; i < len; i++) {
+					for (var i = 0; i <=len; i++) {
 						//console.log(da[i])
 						var newHtml = ""
-						newHtml+="<tr>"
-						newHtml+="<td>"
-						newHtml+="<img src='' class='carImgMi'>"
+						newHtml+="<tr class='carListTr' id=tr"+da[i].id+">"
+						newHtml+="<td class='carImageTd'>"
+						newHtml+="<img src='"+da[i].carImages.imagesUrl+"' class='carImgMi'>"
 						newHtml+="</td>"
 						newHtml+="<td>"
 						newHtml+="<p>"+da[i].brand+"</p>"
@@ -86,8 +87,26 @@ $(document).ready(function(){
 
 	
 	$(document).on("click",".pageNumBtn",function(){
-		console.log($(this).text())
+		//console.log($(this).text())
 		initAjax($(this).text())
+	})
+
+	$(document).on("mouseover mouseout",".carListTr",function(){
+		
+		if ($(this).css("background")=="rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box") {
+			$(this).css("background","#AAEEFF")
+		}else{
+			$(this).css("background","rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box")
+		}
+		
+		
+	})
+	$(document).on("click",".carListTr",function(){
+		
+		var carId = $(this).attr("id").replace("tr","")
+		localStorage.setItem("carId",carId)
+		$(location).attr('href',"http://localhost/resCar/car/carDetails.html")
+
 	})
 
 	$(document).on("click",".accBtn",function(){
@@ -100,7 +119,6 @@ $(document).ready(function(){
 				url:"http://localhost:8081/mi/addShoppingCar",
 				type:"POST",
 				dataType:"json",
-				
 				data:{
 						"username":username,
 						"token":token,
